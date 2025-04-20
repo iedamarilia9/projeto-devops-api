@@ -1,0 +1,17 @@
+name: CD
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v2
+
+      - name: Simulando Deploy
+        run: echo "🚀 Deploy realizado com sucesso! (Simulado)"
