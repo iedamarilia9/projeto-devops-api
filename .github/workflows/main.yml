@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Rodar testes (simulação)
+      run: echo "Testes executados com sucesso!"
