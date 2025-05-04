@@ -1,4 +1,4 @@
-name: Alerta no Discord
+name: Alerta para o Discord
 
 on:
   push:
@@ -8,13 +8,10 @@ on:
 jobs:
   discord-alert:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Enviar alerta para o Discord
-      env:
-        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-      run: |
-        curl -H "Content-Type: application/json" \
-             -X POST \
-             -d "{\"content\": \"🚨 Novo push no repositório por $GITHUB_ACTOR! Veja: $GITHUB_REPOSITORY\"}" \
-             $DISCORD_WEBHOOK_URL
+      - name: Enviar alerta para o Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{"content":"🚀 Novo push no branch main!"}' \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
